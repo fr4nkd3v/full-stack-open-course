@@ -2,7 +2,7 @@
 
 In this repository you can find the solved exercises of the Full Stack Open course as part of my learning in web technologies.
 
-## 📁 Project Structure
+## 🚀 Repository Structure
 
 ```text
 /
@@ -10,5 +10,15 @@ In this repository you can find the solved exercises of the Full Stack Open cour
 │   └── exercise-0.4.md
 │   └── exercise-0.5.md
 │   └── exercise-0.6.md
+│   └── README.md
+├── part1/
+│   └── course-info/
+│   └── README.md
+├── .gitignore
 └── README.md
 ```
+
+## 📁 List of Course Parts
+
+1. [Part 0](./part0/)
+2. [Part 1](./part1/)
