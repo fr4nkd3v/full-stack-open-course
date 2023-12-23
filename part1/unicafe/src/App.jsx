@@ -4,11 +4,28 @@ function App() {
   const [good, setGood] = useState(0)
   const [neutral, setNeutral] = useState(0)
   const [bad, setBad] = useState(0)
+  const [all, setAll] = useState(0)
+  const [average, setAverage] = useState(0)
+  const [positive, setPositive] = useState(0)
 
   const handleClick = (stat) => {
-    if (stat === 'good') setGood(good + 1)
-    if (stat === 'neutral') setNeutral(neutral + 1)
-    if (stat === 'bad') setBad(bad + 1)
+    let [_good, _neutral, _bad, _all] = [good, neutral, bad, all]
+    if (stat === 'good') {
+      _good += 1
+      setGood(_good)
+    }
+    if (stat === 'neutral') {
+      _neutral += 1
+      setNeutral(_neutral)
+    }
+    if (stat === 'bad') {
+      _bad += 1
+      setBad(_bad)
+    }
+    _all += 1
+    setAll(_all)
+    setAverage(((_good * 1) + (_bad * -1)) / _all)
+    setPositive(_good / _all * 100)
   }
 
   return (
@@ -25,6 +42,9 @@ function App() {
         <p>Good: {good}</p>
         <p>Neutral: {neutral}</p>
         <p>Bad: {bad}</p>
+        <p>All: {all}</p>
+        <p>Average: {average}</p>
+        <p>Positive: {positive} %</p>
       </div>
     </>
   )
