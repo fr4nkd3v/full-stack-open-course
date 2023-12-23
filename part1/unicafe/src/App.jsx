@@ -2,22 +2,33 @@ import { useState } from 'react'
 
 function Statistics ({ good, neutral, bad }) {
   let all = 0, average = 0, positive = 0
-  if (!(good === 0 && neutral === 0 & bad === 0)) {
+  const isThereFeedback = (good > 0 || neutral > 0 || bad > 0)
+  if (isThereFeedback) {
     all = good + neutral + bad
     average = ((good * 1) + (bad * -1)) / all
     positive = good / all * 100
   }
-  return (
-    <div>
-      <h1>Statistics</h1>
-      <p>Good: {good}</p>
-      <p>Neutral: {neutral}</p>
-      <p>Bad: {bad}</p>
-      <p>All: {all}</p>
-      <p>Average: {average}</p>
-      <p>Positive: {positive} %</p>
-    </div>
-  )
+
+  if (isThereFeedback) {
+    return (
+      <div>
+        <h1>Statistics</h1>
+        <p>Good: {good}</p>
+        <p>Neutral: {neutral}</p>
+        <p>Bad: {bad}</p>
+        <p>All: {all}</p>
+        <p>Average: {average}</p>
+        <p>Positive: {positive} %</p>
+      </div>
+    )
+  } else {
+    return (
+      <div>
+        <h1>Statistics</h1>
+        <p>No feddback given</p>
+      </div>
+    )
+  }
 }
 
 function App() {
