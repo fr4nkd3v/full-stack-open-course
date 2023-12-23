@@ -5,4 +5,4 @@ The solutions of part 1 exercises to this folder, one app per folder.
 ## Exercise list
 
 - The project **courseinfo** for exercises 1.1.-1.5. as folder [course-info](./course-info/)
-- The project unicafe for exercises 1.6. - 1.7. as folder [unicafe](./unicafe/)
+- The project unicafe for exercises 1.6. - 1.8. as folder [unicafe](./unicafe/)
