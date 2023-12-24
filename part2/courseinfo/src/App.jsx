@@ -1,3 +1,4 @@
+// The Course component had been modularized previously without foreseeing that exercise 2.5 would require it 😓
 import Course from './components/Course'
 
 const App = () => {
