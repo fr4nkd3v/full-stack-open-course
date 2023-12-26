@@ -11,8 +11,12 @@ const App = () => {
   }
   const handlerSubmitForm = (event) => {
     event.preventDefault()
-    const newPersons = persons.concat({ name: newName})
-    setPersons(newPersons)
+    if (persons.some(({ name }) => name === newName)) {
+      alert(`${newName} is already added to phonebook`)
+    } else {
+      const newPersons = persons.concat({ name: newName})
+      setPersons(newPersons)
+    }
     setNewName('')
   }
   return (
