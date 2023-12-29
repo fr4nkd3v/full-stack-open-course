@@ -1,9 +1,25 @@
-const PersonLine = ({ name, number }) => <p>{name} {number}</p>
+const PersonLine = ({ name, number, onDelete }) => {
+  return (
+    <p>
+      {name} {number}
+      <button onClick={onDelete}>delete</button>
+    </p>
+  )
+}
 
-const Persons = ({ persons }) => {
+const Persons = ({ persons, onDeletePerson }) => {
   return (
     <div>
-      {persons.map(({ name, number }) => <PersonLine key={name} name={name} number={number} />)}
+      {
+        persons.map(({ name, number, id }) => (
+          <PersonLine
+            key={name}
+            name={name}
+            number={number}
+            onDelete={() => onDeletePerson(name, id)}
+          />
+        ))
+      }
     </div>
   )
 }

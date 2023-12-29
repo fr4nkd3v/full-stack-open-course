@@ -39,6 +39,15 @@ const App = () => {
     setNewNumber('')
   }
 
+  const handlerDeletePerson = (name, id) => {
+    const confirmed = window.confirm(`Delete ${name} ?`)
+    if (confirmed) {
+      personsService
+        .remove(id)
+        .then(() => setPersons(persons.filter(p => p.id !== id)))
+    }
+  }
+
   const filteredPersons = filterName ? persons.filter(({ name }) => name.toLowerCase().includes(filterName)) : persons
 
   return (
@@ -54,7 +63,7 @@ const App = () => {
         onChangeNumber={handlerChangeNumber}
       />
       <h3>Numbers</h3>
-      <Persons persons={filteredPersons} />
+      <Persons persons={filteredPersons} onDeletePerson={handlerDeletePerson} />
     </div>
   )
 }

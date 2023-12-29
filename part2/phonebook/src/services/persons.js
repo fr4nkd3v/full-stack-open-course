@@ -7,5 +7,8 @@ const getAll = () => {
 const create = personObj => {
   return axios.post(`${url}/persons`, personObj).then(response => response.data)
 }
+const remove = id => {
+  return axios.delete(`${url}/persons/${id}`)
+}
 
-export default { getAll, create }
+export default { getAll, create, remove }
