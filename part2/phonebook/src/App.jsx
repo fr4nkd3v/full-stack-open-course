@@ -2,13 +2,16 @@ import { useEffect, useState } from 'react'
 import Filter from './components/Filter'
 import PersonForm from './components/PersonForm'
 import Persons from './components/Persons'
-import personsService from './services/persons';
+import personsService from './services/persons'
+import Notification from './components/Notification';
 
 const App = () => {
   const [ persons, setPersons ] = useState([])
   const [ newName, setNewName ] = useState('')
   const [ newNumber, setNewNumber ] = useState('')
   const [ filterName, setFilterName ] = useState('')
+  const [ textNotification, setTextNotification ] = useState(null)
+  const [ typeNotification, setTypeNotification ] = useState(null)
 
   useEffect(() => {
     personsService
@@ -37,7 +40,10 @@ const App = () => {
       }
       personsService
         .create(newPerson)
-        .then(createdPerson => setPersons(persons.concat(createdPerson)))
+        .then(createdPerson => {
+          setPersons(persons.concat(createdPerson))
+          showNotification(`Added ${newName}`, 'success')
+        })
     }
     setNewName('')
     setNewNumber('')
@@ -52,6 +58,7 @@ const App = () => {
       .update(personObj.id, modifiedPersonObj)
       .then(updatedPerson => {
         setPersons(persons.map(person => person.id === personObj.id ? updatedPerson : person))
+        showNotification(`Phone updated ${newName}`, 'success')
       })
   }
 
@@ -64,11 +71,18 @@ const App = () => {
     }
   }
 
+  const showNotification = (text, type) => {
+    setTypeNotification(type)
+    setTextNotification(text)
+    setTimeout(() => setTextNotification(null), 5000)
+  }
+
   const filteredPersons = filterName ? persons.filter(({ name }) => name.toLowerCase().includes(filterName)) : persons
 
   return (
     <div>
       <h2>Phonebook</h2>
+      <Notification text={textNotification} type={typeNotification} />
       <Filter filterName={filterName} onChangeFilter={handlerChangeFilterName} />
       <h3>Add a new Number</h3>
       <PersonForm
