@@ -60,6 +60,10 @@ const App = () => {
         setPersons(persons.map(person => person.id === personObj.id ? updatedPerson : person))
         showNotification(`Phone updated ${newName}`, 'success')
       })
+      .catch(error => {
+        showNotification(`Information of ${newName} has already been removed from server`, 'error')
+        setPersons(persons.filter(person => person.id !== personObj.id))
+      })
   }
 
   const handlerDeletePerson = (name, id) => {
