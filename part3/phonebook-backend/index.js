@@ -1,5 +1,5 @@
 import express from 'express';
-import morgan from 'morgan';
+import morgan, { token } from 'morgan';
 
 const app = express();
 
@@ -27,7 +27,22 @@ let persons = [
 ];
 
 app.use(express.json());
-app.use(morgan('tiny'));
+
+morgan.token('body', (req) => JSON.stringify(req.body));
+app.use(morgan(
+  (tokens, req, res) => {
+    const tokensArr = [
+      tokens.method(req, res),
+      tokens.url(req, res),
+      tokens.status(req, res),
+      tokens.res(req, res, 'content-length'), '-',
+      tokens['response-time'](req, res), 'ms',
+    ];
+    if (req.method === 'POST' && res.statusCode === 200)
+      tokensArr.push(tokens.body(req, res));
+    return tokensArr.join(' ');
+  }
+));
 
 app.get('/info', (_, res) => {
   res.send(`<p>Phonebook has info for ${persons.length} people<br/>${new Date()}</p>`)
