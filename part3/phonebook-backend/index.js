@@ -47,9 +47,14 @@ const generateRandomId = () => Math.round(Math.random() * Math.pow(10,10));
 
 app.post('/api/persons', (req, res) => {
   const { name, number } = req.body;
+
   if (!name || !number) {
     res.status(400).json({
-      message: "Name or number is missing"
+      error: "Name or number is missing"
+    });
+  } else if (persons.some(p => p.name === name)) {
+    res.status(400).json({
+      error: "Name must be unique"
     });
   } else {
     const newPerson = {
