@@ -1,4 +1,5 @@
 import express from 'express';
+import morgan from 'morgan';
 
 const app = express();
 
@@ -25,7 +26,8 @@ let persons = [
   }
 ];
 
-app.use(express.json()) 
+app.use(express.json());
+app.use(morgan('tiny'));
 
 app.get('/info', (_, res) => {
   res.send(`<p>Phonebook has info for ${persons.length} people<br/>${new Date()}</p>`)
