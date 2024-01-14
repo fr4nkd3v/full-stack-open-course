@@ -23,3 +23,4 @@ In this repository you can find the solved exercises of the Full Stack Open cour
 1. [Part 0](./part0/)
 2. [Part 1](./part1/)
 3. [Part 2](./part2/)
+4. [Part 3](./part3/)
