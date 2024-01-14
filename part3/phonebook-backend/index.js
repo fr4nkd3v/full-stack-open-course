@@ -25,13 +25,21 @@ const persons = [
   }
 ];
 
+app.get('/info', (_, res) => {
+  res.send(`<p>Phonebook has info for ${persons.length} people<br/>${new Date()}</p>`)
+});
+
 app.get('/api/persons', (_, res) => {
   res.json(persons);
 });
 
-app.get('/info', (_, res) => {
-  res.send(`<p>Phonebook has info for ${persons.length} people<br/>${new Date()}</p>`)
-})
+app.get('/api/persons/:id', (req, res) => {
+  const id = req.params.id;
+  const person = persons.find(p => p.id === Number(id));
+
+  if (person) res.json(person);
+  else res.status(404).end();
+});
 
 const PORT = 3001;
 app.listen(PORT);
