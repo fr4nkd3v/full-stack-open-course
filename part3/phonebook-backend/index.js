@@ -25,6 +25,8 @@ let persons = [
   }
 ];
 
+app.use(express.json()) 
+
 app.get('/info', (_, res) => {
   res.send(`<p>Phonebook has info for ${persons.length} people<br/>${new Date()}</p>`)
 });
@@ -39,6 +41,25 @@ app.get('/api/persons/:id', (req, res) => {
 
   if (person) res.json(person);
   else res.status(404).end();
+});
+
+const generateRandomId = () => Math.round(Math.random() * Math.pow(10,10));
+
+app.post('/api/persons', (req, res) => {
+  const { name, number } = req.body;
+  if (!name || !number) {
+    res.status(400).json({
+      message: "Name or number is missing"
+    });
+  } else {
+    const newPerson = {
+      id: generateRandomId(),
+      name,
+      number,
+    };
+    persons.push(newPerson);
+    res.json(newPerson);
+  }
 });
 
 app.delete('/api/persons/:id', (req, res) => {
