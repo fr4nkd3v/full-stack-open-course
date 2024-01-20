@@ -2,6 +2,8 @@
 
 In this repository you can find the solved exercises of the Full Stack Open course as part of my learning in web technologies.
 
+![fullstackopen banner](https://fullstackopen.com/static/EYE_green_wide-0a72f74a959f54d0f3e4bb8c67f6f158.jpg)
+
 ## 🚀 Repository Structure
 
 ```text
@@ -29,15 +31,16 @@ In this repository you can find the solved exercises of the Full Stack Open cour
 
 ### Phonebook backend
 
-The Phonebook Backend project is part of the proposal exercises in Part 3 of the course (Exercises 3.10.).
+The Phonebook Backend project is part of the proposal exercises in Part 3 of the course (Exercises 3.10., 3.11.).
 
-This exercise consists of deploying the phonebook backend from part 3 of the course, in this case I used Render to host the project in the cloud.
+This exercise consists of deploying the backend of the agenda to the Internet, in this case I used Render to host the project in the cloud, so I created another [repository](https://github.com/fr4nkd3v/phonebook-backend-fullstackopen) exclusively for this exercise, since Render needs the project to be in the root of the repository to deploy it correctly.
 
-Below is a list of the service URL and available endpoints:
+Below is a list of the App frontend and available endpoints:
 
-- Base url: <https://phonebook-backend-c66y.onrender.com>
-- Data detail: GET <https://phonebook-backend-c66y.onrender.com/info>
-- Get all persons: GET <https://phonebook-backend-c66y.onrender.com/api/persons>
-- Get on person by id: GET [https://phonebook-backend-c66y.onrender.com/api/persons/:id](https://phonebook-backend-c66y.onrender.com/api/persons/1)
-- Add person: POST <https://phonebook-backend-c66y.onrender.com/api/persons>
-- Delete person by id: DELETE <https://phonebook-backend-c66y.onrender.com/api/persons/:id>
+- App Frontend url: <https://phonebook-backend-c66y.onrender.com>
+- Endpoints:
+  - Data detail: GET <https://phonebook-backend-c66y.onrender.com/info>
+  - Get all persons: GET <https://phonebook-backend-c66y.onrender.com/api/persons>
+  - Get on person by id: GET [https://phonebook-backend-c66y.onrender.com/api/persons/:id](https://phonebook-backend-c66y.onrender.com/api/persons/1)
+  - Add person: POST <https://phonebook-backend-c66y.onrender.com/api/persons>
+  - Delete person by id: DELETE <https://phonebook-backend-c66y.onrender.com/api/persons/:id>
