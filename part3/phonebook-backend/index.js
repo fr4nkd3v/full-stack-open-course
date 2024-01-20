@@ -1,5 +1,6 @@
 import express from 'express';
 import morgan, { token } from 'morgan';
+import cors from 'cors';
 
 const app = express();
 
@@ -26,6 +27,7 @@ let persons = [
   }
 ];
 
+app.use(cors());
 app.use(express.json());
 
 morgan.token('body', (req) => JSON.stringify(req.body));
